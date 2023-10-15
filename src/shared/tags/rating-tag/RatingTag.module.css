@@ -1,0 +1,3 @@
+.tag {
+    @apply w-fit flex justify-center px-[10px] py-[5px] bg-fill-budle-white rounded-lg;
+}

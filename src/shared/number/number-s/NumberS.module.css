@@ -1,0 +1,3 @@
+.number {
+    @apply text-[12px] font-medium;
+}

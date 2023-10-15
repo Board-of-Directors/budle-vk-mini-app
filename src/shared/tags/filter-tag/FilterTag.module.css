@@ -1,0 +1,9 @@
+.tag {
+
+    @apply py-[10px] px-5 bg-fill-budle-purple rounded-xl text-fill-budle-white;
+
+    &:hover {
+        @apply cursor-pointer;
+    }
+
+}

@@ -1,0 +1,23 @@
+.wrapper {
+
+    @apply w-[150px] h-[150px] flex flex-col justify-end rounded-2xl relative flex-shrink-0;
+
+    .content {
+
+        @apply p-[15px] flex flex-col justify-end absolute z-30;
+
+        .bottomCol {
+            @apply flex flex-col gap-2;
+        }
+
+    }
+
+    .image {
+        @apply w-[150px] h-[150px] absolute z-10 rounded-2xl;
+    }
+
+    .gradient {
+        @apply w-[150px] h-[150px] bg-text-budle-black opacity-40 absolute z-20 rounded-2xl;
+    }
+
+}

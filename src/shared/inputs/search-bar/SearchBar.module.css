@@ -1,0 +1,10 @@
+.wrapper {
+
+    @apply text-text-budle-black font-medium text-base flex flex-row items-center
+    bg-background-budle-light-blue px-[30px] py-[20px] rounded-xl border-0 outline-0 w-full;
+
+    &:hover {
+        @apply outline-0;
+    }
+
+}
