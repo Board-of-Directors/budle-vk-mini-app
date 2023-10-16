@@ -1,12 +1,12 @@
 import style from "./EstablishmentCard.module.css"
 import TextS from "../../../shared/text/text-s/TextS";
-import RatingTag from "../../../shared/tags/rating-tag/RatingTag";
+import DescrTag from "../../../shared/tags/descr-tag/DescrTag";
 import StarRow from "../../../shared/rows/star-row/StarRow";
 
-export const EstablishmentCard = ({card}) => {
+export const EstablishmentCard = ({card, onClick}) => {
 
     return (
-        <div className={style.wrapper}>
+        <div className={style.wrapper} onClick={() => onClick()}>
 
             <img src={card.image} className={style.image} alt={"Card image"}/>
 
@@ -20,7 +20,7 @@ export const EstablishmentCard = ({card}) => {
 
                 <div className={style.bottomCol}>
                     <TextS text={card.name} color={"#FFFFFF"}/>
-                    <RatingTag number={card.rating}/>
+                    <DescrTag descr={card.rating}/>
                 </div>
 
             </div>

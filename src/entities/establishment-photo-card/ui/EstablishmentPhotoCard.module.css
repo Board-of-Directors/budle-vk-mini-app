@@ -1,0 +1,28 @@
+.wrapper {
+
+    @apply w-full h-[200px] flex flex-col items-end relative;
+
+    .contentRow {
+
+        @apply w-full p-5 flex flex-row justify-between items-center absolute z-20
+        left-0 bottom-0;
+
+        .descrCol {
+            @apply flex flex-col gap-[5px];
+        }
+
+    }
+
+    .image {
+        @apply w-full h-[200px] absolute;
+    }
+
+    .closeBtn {
+        @apply absolute z-20 mt-5 mr-5;
+    }
+
+    .overlay {
+        @apply w-full h-[200px] z-10 bg-text-budle-black opacity-40;
+    }
+
+}

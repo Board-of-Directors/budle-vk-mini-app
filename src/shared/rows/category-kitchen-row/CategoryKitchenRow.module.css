@@ -1,0 +1,9 @@
+.row {
+
+    @apply flex flex-row gap-3 items-center;
+
+    .separator {
+        @apply w-1 h-1 rounded-full bg-text-bulde-gray;
+    }
+
+}

@@ -1,0 +1,9 @@
+.row {
+
+    @apply w-full flex flex-row items-center justify-between;
+
+    .leftCol {
+        @apply flex flex-col gap-[5px];
+    }
+
+}

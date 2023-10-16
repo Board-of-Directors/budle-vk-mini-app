@@ -16,6 +16,7 @@ export const FilterTag = (props) => {
             }}
             onClick={() => props.setActive(tag)}
         >
+            {props.icon}
             {tag.name}
         </div>
     )

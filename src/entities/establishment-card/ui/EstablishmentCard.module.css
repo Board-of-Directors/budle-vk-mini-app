@@ -2,6 +2,10 @@
 
     @apply w-[150px] h-[150px] flex flex-col justify-end rounded-2xl relative flex-shrink-0;
 
+    &:hover {
+        @apply cursor-pointer;
+    }
+
     .content {
 
         @apply p-[15px] flex flex-col justify-end absolute z-30;

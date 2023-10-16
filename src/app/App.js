@@ -1,38 +1,25 @@
-import React, {useState, useEffect} from 'react';
-import bridge from '@vkontakte/vk-bridge';
-import {AdaptivityProvider, AppRoot, ConfigProvider} from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
-
+import {useActiveVkuiLocation, useGetPanelForView} from "@vkontakte/vk-mini-apps-router";
+import {Root, View} from "@vkontakte/vkui";
 import EstablishmentListScreen from "../panels/establishment-list/EstablishmentListScreen";
-import {Routes} from "../enum/Routes";
+import EstablishmentCardScreen from "../panels/establishment-card/EstablishmentCardScreen";
 
 const App = () => {
 
-    const [activePanel, setActivePanel] = useState(Routes.ESTABLISHMENT_LIST);
-    const [fetchedUser, setUser] = useState(null);
-
-    useEffect(() => {
-        async function fetchData() {
-            const user = await bridge.send('VKWebAppGetUserInfo');
-            setUser(user);
-        }
-
-        fetchData();
-    }, []);
-
-    const go = e => {
-        setActivePanel(e.currentTarget.dataset.to);
-    };
+    const { view: activeView } = useActiveVkuiLocation();
+    const activePanel = useGetPanelForView('main_view');
 
     return (
-        <ConfigProvider appearance={"light"}>
-            <AdaptivityProvider>
-                <AppRoot>
-                    <EstablishmentListScreen/>
-                </AppRoot>
-            </AdaptivityProvider>
-        </ConfigProvider>
+
+        <Root activeView={activeView}>
+            <View nav={'main_view'} activePanel={activePanel}>
+                <EstablishmentListScreen nav={'establishment_list_panel'} />
+                <EstablishmentCardScreen nav={'establishment_card_panel'} />
+            </View>
+        </Root>
+
     );
+
 }
 
 export default App

@@ -1,0 +1,19 @@
+.row {
+
+    @apply w-full flex flex-row justify-between items-center;
+
+    .ratingRow {
+        @apply flex flex-row gap-[15px] items-center;
+    }
+
+    .iconRow {
+
+        @apply flex flex-row gap-5 items-center;
+
+        .icon {
+            @apply stroke-text-bulde-gray;
+        }
+
+    }
+
+}
