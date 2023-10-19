@@ -14,7 +14,7 @@
     }
 
     .image {
-        @apply w-full h-[200px] absolute;
+        @apply w-full h-[200px] absolute object-cover;
     }
 
     .closeBtn {

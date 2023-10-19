@@ -1,0 +1,14 @@
+.wrapper {
+
+    @apply flex justify-center items-center w-[50px] h-[50px]
+    relative flex-shrink-0 bg-background-budle-light-blue rounded-full;
+
+    &:hover {
+        @apply cursor-pointer;
+    }
+
+    .col {
+        @apply flex flex-col justify-center items-center;
+    }
+
+}
