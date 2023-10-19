@@ -10,5 +10,15 @@ export const router = createBrowserRouter([
         path: '/establishment-card',
         panel: 'establishment_card_panel',
         view: 'main_view'
+    },
+    {
+        path: '/establishment-card/:establishmentId/booking',
+        panel: 'booking_menu_panel',
+        view: 'main_view'
+    },
+    {
+        path: '/establishment-card/:establishmentId/booking',
+        panel: 'booking_menu_panel',
+        view: 'main_view'
     }
 ]);

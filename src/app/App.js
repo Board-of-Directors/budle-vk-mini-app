@@ -3,7 +3,7 @@ import {useActiveVkuiLocation, useGetPanelForView} from "@vkontakte/vk-mini-apps
 import {Root, View} from "@vkontakte/vkui";
 import EstablishmentListScreen from "../panels/establishment-list/ui/EstablishmentListScreen";
 import EstablishmentCardScreen from "../panels/establishment-card/ui/EstablishmentCardScreen";
-import BookingMenuPopup from "../panels/booking-menu/ui/BookingMenuPopup";
+import BookingMenuScreen from "../panels/booking-menu/ui/BookingMenuScreen";
 
 const App = () => {
 
@@ -16,6 +16,7 @@ const App = () => {
             <View nav={'main_view'} activePanel={activePanel}>
                 <EstablishmentListScreen nav={'establishment_list_panel'} />
                 <EstablishmentCardScreen nav={'establishment_card_panel'} />
+                <BookingMenuScreen nav={'booking_menu_panel'} />
             </View>
         </Root>
 

@@ -1,15 +1,17 @@
-import style from "./BookingMenuPopup.module.css"
+import style from "./BookingMenuScreen.module.css"
 import GuestAmountController from "../../../entities/guest-amout-controller/ui/GuestAmountController";
 import BookingDayRow from "../../../entities/booking-day-row/ui/BookingDayRow";
 import BookingTimeRow from "../../../entities/time-tag-row/ui/BookingTimeRow";
-import BookingPreferencesGrid from "../../../entities/preferences-tag-grid/ui/BookingPreferencesGrid";
 import Button from "../../../shared/buttons/button/Button";
 import {FiMap} from "react-icons/fi";
 import {useBookingMenuStore} from "../api/BookingMenuStore";
 import {useEffect} from "react";
 import BookingHeaderRow from "../../../entities/booking-header-row/ui/BookingHeaderRow";
+import {useParams} from "@vkontakte/vk-mini-apps-router";
 
-const BookingMenuPopup = ({establishmentId, onClose}) => {
+const BookingMenuScreen = () => {
+
+    const {establishmentId} = useParams();
 
     const getTimeSchedule = useBookingMenuStore((state) => state.getTimeSchedule)
 
@@ -20,7 +22,7 @@ const BookingMenuPopup = ({establishmentId, onClose}) => {
     return (
         <div className={style.wrapper}>
 
-            <BookingHeaderRow header={"Горячий Цех"} onClose={onClose} />
+            <BookingHeaderRow header={"Горячий Цех"}/>
 
             <GuestAmountController />
             <BookingDayRow/>
@@ -48,4 +50,4 @@ const BookingMenuPopup = ({establishmentId, onClose}) => {
     )
 }
 
-export default BookingMenuPopup
+export default BookingMenuScreen
