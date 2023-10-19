@@ -1,7 +1,6 @@
 import style from "./EstablismentCardRow.module.css"
 import {EstablishmentCard} from "../../../entities/establishment-card/ui/EstablishmentCard";
 import CategoryAmountRow from "../../../shared/rows/category-amount-row/CategoryAmountRow";
-import {establishmentData} from "../model/establishmentData";
 import {useRouteNavigator} from "@vkontakte/vk-mini-apps-router";
 
 const EstablishmentCardRow = (props) => {
@@ -15,10 +14,10 @@ const EstablishmentCardRow = (props) => {
 
             <div className={style.scrollbar}>
                 {
-                    establishmentData.map((card) => {
+                    props.establishments.map((card) => {
                         return <EstablishmentCard
                             card={card}
-                            onClick={() => routerNavigator.push("/establishment-card")}
+                            onClick={() => routerNavigator.push(`/establishment-card?id=${card.id}`)}
                         />
                     })
                 }

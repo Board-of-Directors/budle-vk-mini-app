@@ -8,7 +8,10 @@ const RatingRow = (props) => {
         <div className={style.row}>
 
             <div className={style.ratingRow}>
-                <DescrTag descr={props.rating}/>
+                <DescrTag
+                    descr={props.rating}
+                    tagColor={"#EEF5F9"}
+                />
                 <TextM text={"Рейтинг"} color={"#B6C1CE"}/>
             </div>
 

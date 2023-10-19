@@ -1,8 +1,8 @@
 import '@vkontakte/vkui/dist/vkui.css';
 import {useActiveVkuiLocation, useGetPanelForView} from "@vkontakte/vk-mini-apps-router";
 import {Root, View} from "@vkontakte/vkui";
-import EstablishmentListScreen from "../panels/establishment-list/EstablishmentListScreen";
-import EstablishmentCardScreen from "../panels/establishment-card/EstablishmentCardScreen";
+import EstablishmentListScreen from "../panels/establishment-list/ui/EstablishmentListScreen";
+import EstablishmentCardScreen from "../panels/establishment-card/ui/EstablishmentCardScreen";
 
 const App = () => {
 

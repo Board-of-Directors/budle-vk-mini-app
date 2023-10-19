@@ -8,9 +8,9 @@ const AddressRow = (props) => {
     return (
         <HeaderContentCol header={"Адрес"}>
             <div className={style.row}>
-                <div className={style.leftCol}>
-                    <TextM text={"м. Площадь Ленина"}/>
-                    <TextM text={"ул. Советская, д. 64"}/>
+                <div className={style.leftCol}> 
+                    <TextM text={props.subway}/>
+                    <TextM text={props.address}/>
                 </div>
                 <TagButton
                     text={"Карта"}

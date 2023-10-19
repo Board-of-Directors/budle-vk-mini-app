@@ -1,6 +1,6 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import EstablishmentListScreen from "../../panels/establishment-list/EstablishmentListScreen";
-import EstablishmentCardScreen from "../../panels/establishment-card/EstablishmentCardScreen";
+import EstablishmentListScreen from "../../panels/establishment-list/ui/EstablishmentListScreen";
+import EstablishmentCardScreen from "../../panels/establishment-card/ui/EstablishmentCardScreen";
 
 const Router = () => {
     return (

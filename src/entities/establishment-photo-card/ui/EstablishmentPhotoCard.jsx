@@ -4,6 +4,7 @@ import CategoryKitchenRow from "../../../shared/rows/category-kitchen-row/Catego
 import Text2XL from "../../../shared/text/text-2xl/Text2XL";
 import DescrTag from "../../../shared/tags/descr-tag/DescrTag";
 import {useRouteNavigator} from "@vkontakte/vk-mini-apps-router";
+import Base64Image from "../../../shared/cards/base64-image/Base64Image";
 
 const EstablishmentPhotoCard = (props) => {
 
@@ -12,11 +13,11 @@ const EstablishmentPhotoCard = (props) => {
     return (
         <div className={style.wrapper}>
 
-            <div className={style.overlay} />
-            <img src={props.image} className={style.image} alt={"/"} />
+            <div className={style.overlay}/>
+            <Base64Image data={props.image} className={style.image}/>
 
             <div className={style.closeBtn}>
-                <CloseButton onClick={() => routeNavigator.push('/')} />
+                <CloseButton onClick={() => routeNavigator.push('/')}/>
             </div>
 
             <div className={style.contentRow}>
@@ -28,11 +29,11 @@ const EstablishmentPhotoCard = (props) => {
                         kitchen={props.kitchen}
                     />
 
-                    <Text2XL text={props.name} color={"#FFFFFF"} />
+                    <Text2XL text={props.name} color={"#FFFFFF"}/>
 
                 </div>
 
-                <DescrTag descr={"7 фото"} />
+                <DescrTag descr={"7 фото"}/>
 
             </div>
         </div>

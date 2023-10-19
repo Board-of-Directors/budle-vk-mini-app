@@ -2,13 +2,14 @@ import style from "./EstablishmentCard.module.css"
 import TextS from "../../../shared/text/text-s/TextS";
 import DescrTag from "../../../shared/tags/descr-tag/DescrTag";
 import StarRow from "../../../shared/rows/star-row/StarRow";
+import Base64Image from "../../../shared/cards/base64-image/Base64Image";
 
 export const EstablishmentCard = ({card, onClick}) => {
 
     return (
         <div className={style.wrapper} onClick={() => onClick()}>
 
-            <img src={card.image} className={style.image} alt={"Card image"}/>
+            <Base64Image data={card.image} className={style.image}/>
 
             <div className={style.gradient}/>
 

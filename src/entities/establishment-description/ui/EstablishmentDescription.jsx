@@ -10,9 +10,12 @@ const EstablishmentDescription = (props) => {
     return (
         <HeaderContentCol header={"Описание"}>
             {!isExpanded ? truncateDescription(props.description) : props.description}
-            <div onClick={() => setExpanded(!isExpanded)}>
-                <TextM text={"Ещё"} color={"#654DF6"}/>
-            </div>
+            {
+                props.description.length < 200 ? null :
+                    <div onClick={() => setExpanded(!isExpanded)}>
+                        <TextM text={"Ещё"} color={"#654DF6"}/>
+                    </div>
+            }
         </HeaderContentCol>
     )
 }
