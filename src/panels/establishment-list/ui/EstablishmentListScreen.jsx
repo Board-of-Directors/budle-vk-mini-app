@@ -6,16 +6,15 @@ import FilterTagRow from "../../../entities/filter-tag-row/ui/FilterTagRow";
 import {useEffect, useState} from "react"
 import {filterTagsData} from "../../../entities/filter-tag-row/model/filterTagsData";
 import {Panel} from "@vkontakte/vkui";
-import axios from "axios";
-import {useEstablishmentsStore} from "../model/EstablishmentListStore";
 import {useShallow} from "zustand/react/shallow";
+import {useStore} from "../../../store/Store";
 
 const EstablishmentListScreen = (props) => {
 
     const [inputText, setText] = useState("")
     const [activeTag, setActive] = useState(filterTagsData[0])
 
-    const [establishments, getAllEstablishments] = useEstablishmentsStore(
+    const [establishments, getAllEstablishments] = useStore(
         useShallow((state) => [state.establishments, state.getAllEstablishments])
     )
 

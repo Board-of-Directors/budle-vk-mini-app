@@ -1,13 +1,13 @@
 import style from "./GuestAmountController.module.css"
 import HeaderContentCol from "../../../shared/wrappers/header-content-col/HeaderContentCol";
 import AmountButton from "../../../shared/buttons/amount-button/AmountButton";
-import {useBookingMenuStore} from "../../../panels/booking-menu/api/BookingMenuStore";
 import {useShallow} from "zustand/react/shallow";
 import Text3XL from "../../../shared/text/text-3xl/Text3XL";
+import {useStore} from "../../../store/Store";
 
 const GuestAmountController = () => {
 
-    const [guestAmount, setGuestAmount] = useBookingMenuStore(
+    const [guestAmount, setGuestAmount] = useStore(
         useShallow((state) => {
             return [state.guestAmount, state.setGuestAmount]
         })

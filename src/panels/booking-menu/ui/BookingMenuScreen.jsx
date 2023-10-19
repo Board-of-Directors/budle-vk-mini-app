@@ -4,27 +4,23 @@ import BookingDayRow from "../../../entities/booking-day-row/ui/BookingDayRow";
 import BookingTimeRow from "../../../entities/time-tag-row/ui/BookingTimeRow";
 import Button from "../../../shared/buttons/button/Button";
 import {FiMap} from "react-icons/fi";
-import {useBookingMenuStore} from "../api/BookingMenuStore";
 import {useEffect} from "react";
 import BookingHeaderRow from "../../../entities/booking-header-row/ui/BookingHeaderRow";
-import {useParams} from "@vkontakte/vk-mini-apps-router";
+import {useStore} from "../../../store/Store";
 
 const BookingMenuScreen = () => {
 
-    const {establishmentId} = useParams();
-
-    const getTimeSchedule = useBookingMenuStore((state) => state.getTimeSchedule)
+    const getTimeSchedule = useStore((state) => state.getTimeSchedule)
 
     useEffect(() => {
-        getTimeSchedule(establishmentId)
+        getTimeSchedule()
     }, []);
 
     return (
         <div className={style.wrapper}>
 
-            <BookingHeaderRow header={"Горячий Цех"}/>
-
-            <GuestAmountController />
+            <BookingHeaderRow/>
+            <GuestAmountController/>
             <BookingDayRow/>
             <BookingTimeRow/>
 

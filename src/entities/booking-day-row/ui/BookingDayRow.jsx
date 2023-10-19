@@ -2,20 +2,15 @@ import style from "./BookingDayRow.module.css"
 import HeaderContentCol from "../../../shared/wrappers/header-content-col/HeaderContentCol";
 import BookingDayTag from "../../../shared/tags/booking-day-tag/BookingDayTag";
 import {useShallow} from "zustand/react/shallow";
-import {useBookingMenuStore} from "../../../panels/booking-menu/api/BookingMenuStore";
-import {useEffect} from "react";
+import {useStore} from "../../../store/Store";
 
 const BookingDayRow = () => {
 
-    const [selectedTag, tagList, selectTag] = useBookingMenuStore(
+    const [selectedTag, tagList, selectTag] = useStore(
         useShallow((state) => [
             state.selectedDayTag, state.dayTagList, state.selectDayTag
         ])
     )
-
-    useEffect(() => {
-
-    }, [])
 
     return (
         <HeaderContentCol header={"День"}>

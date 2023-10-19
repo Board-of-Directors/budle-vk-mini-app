@@ -8,10 +8,9 @@ import WorkingHoursRow from "../../../shared/rows/working-hours-row/WorkingHours
 import AddressRow from "../../../shared/rows/address-row/AddressRow";
 import {Panel} from "@vkontakte/vkui";
 import {useRouteNavigator, useSearchParams} from "@vkontakte/vk-mini-apps-router";
-import {useEstablishmentCardStore} from "../model/EstablishmentCardStore";
+import {useStore} from "../../../store/Store";
 import {useShallow} from "zustand/react/shallow";
-import {useEffect, useState} from "react";
-import BookingMenuScreen from "../../booking-menu/ui/BookingMenuScreen";
+import {useEffect} from "react";
 import Button from "../../../shared/buttons/button/Button";
 
 const EstablishmentCardScreen = (props) => {
@@ -23,18 +22,13 @@ const EstablishmentCardScreen = (props) => {
     const [searchParams] = useSearchParams();
     const establishmentId = searchParams.get("id")
 
-    const [establishmentInfo, getEstablishmentInfo] = useEstablishmentCardStore(
+    const [establishmentInfo, getEstablishmentInfo] = useStore(
         useShallow((state) => [state.establishment, state.getEstablishment])
     )
 
     useEffect(() => {
         getEstablishmentInfo(establishmentId)
     }, [])
-
-    useEffect(() => {
-        console.log(establishmentInfo)
-    }, [establishmentInfo])
-
 
     return (
         <Panel nav={props.nav}>

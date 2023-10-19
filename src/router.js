@@ -17,7 +17,7 @@ export const router = createBrowserRouter([
         view: 'main_view'
     },
     {
-        path: '/establishment-card/:establishmentId/booking',
+        path: '/establishment-card/:establishmentId/booking/info',
         panel: 'booking_menu_panel',
         view: 'main_view'
     }
