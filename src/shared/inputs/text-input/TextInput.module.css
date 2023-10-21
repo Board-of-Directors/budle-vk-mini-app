@@ -1,0 +1,25 @@
+.wrapper {
+
+    @apply w-full flex flex-col gap-[10px] items-start;
+
+    .inputIcon {
+
+        @apply relative w-full;
+
+        .input {
+
+            @apply w-full px-[20px] py-[15px] bg-background-budle-light-blue rounded-xl font-medium;
+
+            &:focus {
+                @apply outline-0;
+            }
+
+        }
+
+        .passwordIcon {
+            @apply absolute right-5 top-1/3 stroke-text-bulde-gray;
+        }
+
+    }
+
+}

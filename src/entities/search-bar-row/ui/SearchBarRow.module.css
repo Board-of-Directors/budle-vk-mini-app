@@ -1,9 +1,15 @@
 .wrapper {
 
-    @apply flex flex-row gap-5 items-center w-full;
+    @apply flex flex-row gap-5 items-center w-full relative;
 
-    .icon {
-        @apply stroke-text-budle-black;
+    .iconRow {
+
+        @apply flex flex-row gap-[15px] items-center;
+
+        .icon {
+            @apply stroke-text-budle-black;
+        }
+
     }
 
 }

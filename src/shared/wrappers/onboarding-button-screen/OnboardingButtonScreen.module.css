@@ -1,0 +1,33 @@
+.wrapper {
+
+    @apply w-full h-screen bg-fill-budle-white flex flex-col items-center p-[30px] gap-[60px];
+
+    .topRow {
+
+        @apply w-full flex flex-row items-center justify-center gap-[30px];
+
+        .icon {
+
+            @apply stroke-text-bulde-gray;
+
+            &:hover {
+                @apply cursor-pointer;
+            }
+
+        }
+
+        .logo {
+            @apply h-[50px];
+        }
+
+    }
+
+    .content {
+        @apply w-full flex flex-col gap-5;
+    }
+
+    .button {
+        @apply absolute mx-[300px] w-full top-[530px];
+    }
+
+}

@@ -1,0 +1,4 @@
+.wrapper {
+    @apply w-full h-screen p-[30px] bg-fill-budle-white flex
+    flex-col items-center justify-center gap-10;
+}

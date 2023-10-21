@@ -1,0 +1,29 @@
+.wrapper {
+
+    @apply w-full h-screen bg-fill-budle-white flex justify-center items-center;
+
+    .image {
+        @apply w-[250px] h-[250px] object-fill;
+    }
+
+    .mainCol {
+
+        @apply flex flex-col gap-[50px];
+
+        .logoTextCol {
+
+            @apply flex flex-col gap-4;
+
+            .logo {
+                @apply h-[60px];
+            }
+
+            .textCol {
+                @apply flex flex-col gap-[10px];
+            }
+
+        }
+
+    }
+
+}

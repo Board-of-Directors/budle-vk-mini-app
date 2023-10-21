@@ -17,7 +17,7 @@ const EstablishmentPhotoCard = (props) => {
             <Base64Image data={props.image} className={style.image}/>
 
             <div className={style.closeBtn}>
-                <CloseButton onClick={() => routeNavigator.push('/')}/>
+                <CloseButton onClick={() => routeNavigator.push('/establishment-list')}/>
             </div>
 
             <div className={style.contentRow}>
