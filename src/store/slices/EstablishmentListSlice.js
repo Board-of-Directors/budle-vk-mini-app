@@ -1,4 +1,6 @@
 import axios from "axios";
+import {api} from "../../api/api";
+import Cookies from "js-cookie";
 
 export const establishmentListSlice = (set, get) => ({
 
@@ -6,7 +8,7 @@ export const establishmentListSlice = (set, get) => ({
     searchEstablishments: [],
 
     getAllEstablishments: async () => {
-        await axios.get("https://80.89.192.250:8080/establishment/all")
+        await api.get("/establishment/all")
             .then((data) => set({establishments: data.data.result.establishments}))
             .catch((error) => console.log(error))
     },

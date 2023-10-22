@@ -1,9 +1,9 @@
-import axios from "axios";
+import {api} from "../../api/api";
 
 export const establishmentCardInfoSlice = (set) => ({
     establishment: null,
     getEstablishment: async (establishmentId) => {
-        const response = await axios.get(`https://80.89.192.250:8080/establishment`,
+        const response = await api.get(`/establishment`,
             {
                 params: {
                     establishmentId: establishmentId

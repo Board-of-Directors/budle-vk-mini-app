@@ -14,8 +14,6 @@ bridge.send("VKWebAppInit").then((data) => {
     console.log(error)
 })
 
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
-
 const root = createRoot(document.getElementById("root"))
 
 root.render(

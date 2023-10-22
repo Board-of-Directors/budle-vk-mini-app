@@ -1,5 +1,7 @@
 import bridge from "@vkontakte/vk-bridge";
 import axios from "axios";
+import {api} from "../../api/api";
+import Cookies from "js-cookie";
 
 export const authorisationSlice = (set, get) => ({
 
@@ -32,14 +34,10 @@ export const authorisationSlice = (set, get) => ({
 
     registerUser: async () => {
 
-        const response = await axios.post("https://80.89.192.250:8080/user/register", {
+        const response = await api.post("/user/register", {
             password: get().password,
             username: get().nickname,
             phoneNumber: get().phoneNumber
-        }, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
         })
 
         console.log(response)
@@ -47,21 +45,10 @@ export const authorisationSlice = (set, get) => ({
     },
 
     loginUser: async () => {
-
-        const response = await axios.post("https://80.89.192.250:8080/user/login", {
+        await api.post("/user/login", {
             username: get().nickname,
             password: get().password
-        },{
-            headers: {
-                'Content-Type': 'multipart/form-data',
-                'Vary' : 'Access-Control-Request-Methods',
-                'Access-Control-Allow-Origin': '*',
-                'Host': '80.89.192.250:8080'
-            }
         })
-
-        console.log(response)
-
     }
 
 })

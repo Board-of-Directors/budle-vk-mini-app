@@ -7,10 +7,13 @@ import {FiMap} from "react-icons/fi";
 import {useEffect} from "react";
 import BookingHeaderRow from "../../../entities/booking-header-row/ui/BookingHeaderRow";
 import {useStore} from "../../../store/Store";
+import {useShallow} from "zustand/react/shallow";
 
 const BookingMenuScreen = () => {
 
-    const getTimeSchedule = useStore((state) => state.getTimeSchedule)
+    const [getTimeSchedule, postOrder] = useStore(
+        useShallow((state) => [state.getTimeSchedule, state.postOrder])
+    )
 
     useEffect(() => {
         getTimeSchedule()
@@ -38,7 +41,7 @@ const BookingMenuScreen = () => {
                 />
                 <Button
                     text={"Забронировать"}
-                    onClick={() => console.log("Забронировать")}
+                    onClick={() => postOrder()}
                 />
             </div>
 

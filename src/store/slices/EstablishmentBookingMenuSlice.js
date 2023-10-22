@@ -1,4 +1,5 @@
-import axios from "axios";
+import {api} from "../../api/api";
+import Cookies from 'js-cookie';
 
 export const establishmentBookingMenuSlice = (set, get) => ({
 
@@ -19,7 +20,7 @@ export const establishmentBookingMenuSlice = (set, get) => ({
     })),
 
     getTimeSchedule: async () => {
-        const response = await axios.get("https://80.89.192.250:8080/establishment/time", {
+        const response = await api.get("/establishment/time", {
             params: {
                 establishmentId: get().establishment.id
             }
@@ -34,20 +35,13 @@ export const establishmentBookingMenuSlice = (set, get) => ({
 
         const order = {
             guestCount: get().guestAmount,
-            date: `23-10-${get().selectedDayTag.dayNumber}`,
-            time: {
-                hour: get().selectedTime.substring(0,2),
-                minute: get().selectedTime.substring(3,5),
-                second: 0,
-                nano: 0
-            },
-            establishmentId: get().establishment.id,
-            userId: 1,
-            spotId: 1
+            date: `2023-10-${get().selectedDayTag.dayNumber}`,
+            time: "09:00",
+            establishmentId: get().establishment.id
         }
 
-        const response = await axios.post("https://80.89.192.250:8080/order", order)
-        set({orderStatus: response.status === 200 ? true : false})
+        const response = await api.post("/order", order)
+        console.log(response)
 
     }
 
