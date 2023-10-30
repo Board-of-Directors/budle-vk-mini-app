@@ -36,7 +36,7 @@ export const establishmentBookingMenuSlice = (set, get) => ({
         const order = {
             guestCount: get().guestAmount,
             date: `2023-10-${get().selectedDayTag.dayNumber}`,
-            time: "09:00",
+            time: get().selectedTime.name,
             establishmentId: get().establishment.id
         }
 

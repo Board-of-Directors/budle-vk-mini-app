@@ -8,6 +8,8 @@ import StartScreen from "../panels/authorisation/start-screen/StartScreen";
 import AuthorizationScreen from "../panels/authorisation/authorization-screen/AuthorizationScreen";
 import InformationScreen from "../panels/information-screen/InformationScreen";
 import EstablishmentSearchScreen from "../panels/establishment-search/EstablishmentSearchScreen";
+import UserProfileMenuScreen from "../panels/user-menu/user-profile-menu/UserProfileMenuScreen";
+import UserOrdersScreen from "../panels/user-menu/user-orders/UserOrdersScreen";
 
 const App = () => {
 
@@ -22,10 +24,13 @@ const App = () => {
                 <AuthorizationScreen nav={"authorization_panel"}/>
 
                 <EstablishmentListScreen nav={'establishment_list_panel'}/>
-                <EstablishmentSearchScreen nav={'establishment_search_panel'} />
+                <EstablishmentSearchScreen nav={'establishment_search_panel'}/>
                 <EstablishmentCardScreen nav={'establishment_card_panel'}/>
 
                 <BookingMenuScreen nav={'booking_menu_panel'}/>
+
+                <UserProfileMenuScreen nav={'user_menu_panel'}/>
+                <UserOrdersScreen nav={'user_menu_orders_panel'}/>
 
                 <InformationScreen
                     nav={'information_panel'}

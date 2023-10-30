@@ -12,6 +12,7 @@ import {useStore} from "../../../store/Store";
 import {useShallow} from "zustand/react/shallow";
 import {useEffect} from "react";
 import Button from "../../../shared/buttons/button/Button";
+import {filterTagsData} from "../../../entities/filter-tag-row/model/filterTagsData";
 
 const EstablishmentCardScreen = (props) => {
 
@@ -43,7 +44,11 @@ const EstablishmentCardScreen = (props) => {
                         />
                         <div className={style.wrapper}>
                             <RatingRow rating={establishmentInfo.rating}/>
-                            <FilterTagRow activeTag={mockActiveTag}/>
+                            <FilterTagRow
+                                tagList={filterTagsData}
+                                activeTag={mockActiveTag}
+                                setActive={() => {}}
+                            />
                             <EstablishmentDescription description={establishmentInfo.description}/>
                             <PhotoCardGrid photos={[]}/>
                             <WorkingHoursRow workingHours={establishmentInfo.workingHours}/>

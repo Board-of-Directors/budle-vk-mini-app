@@ -1,6 +1,6 @@
 .wrapper {
 
-    @apply w-[150px] h-[150px] flex flex-col justify-end rounded-2xl relative flex-shrink-0;
+    @apply w-[150px] h-[150px] flex flex-col justify-end rounded-2xl relative flex-shrink-0 bg-orange-500;
 
     &:hover {
         @apply cursor-pointer;
@@ -17,7 +17,7 @@
     }
 
     .image {
-        @apply w-[150px] h-[150px] absolute z-10 rounded-2xl object-cover;
+        @apply w-full h-full absolute z-10 rounded-2xl object-cover;
     }
 
     .gradient {

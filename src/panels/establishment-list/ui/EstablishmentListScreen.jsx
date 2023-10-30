@@ -31,6 +31,7 @@ const EstablishmentListScreen = (props) => {
             <div className={style.wrapper}>
                 <SearchBarRow onChange={(text) => setText(text)}/>
                 <FilterTagRow
+                    tagList={filterTagsData}
                     activeTag={activeTag}
                     setActive={(tag) => setActive(tag)}
                 />

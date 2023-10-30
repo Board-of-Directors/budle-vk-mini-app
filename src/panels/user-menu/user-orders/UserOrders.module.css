@@ -1,0 +1,5 @@
+.wrapper {
+
+    @apply w-full p-[30px] flex flex-col gap-5;
+
+}

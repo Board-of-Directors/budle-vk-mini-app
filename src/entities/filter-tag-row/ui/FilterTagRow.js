@@ -6,7 +6,7 @@ export const FilterTagRow = (props) => {
     return (
         <div className={style.wrapper}>
             {
-                filterTagsData.map((tag) => {
+                props.tagList.map((tag) => {
                     return <FilterTag
                         activeTag={props.activeTag}
                         setActive={props.setActive}

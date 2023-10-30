@@ -1,0 +1,3 @@
+.wrapper {
+    @apply p-[30px] h-screen bg-white w-full flex flex-col gap-5 items-start;
+}

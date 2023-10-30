@@ -18,7 +18,11 @@ export const SearchBarRow = ({isExpanded = false, onClick, ...props}) => {
             {
                 isExpanded ? null : <div className={style.iconRow}>
                     <FiMap size={"20px"} className={style.icon}/>
-                    <FiMenu size={"20px"} className={style.icon}/>
+                    <FiMenu
+                        size={"20px"}
+                        className={style.icon}
+                        onClick={() => routeNavigator.push("/user-menu")}
+                    />
                 </div>
             }
 

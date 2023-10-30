@@ -1,0 +1,10 @@
+.wrapper {
+
+    @apply w-full flex flex-row gap-[15px] items-center
+    py-[25px] border-t-[1px] border-background-budle-light-blue;
+
+    &:hover {
+        @apply bg-background-budle-light-blue cursor-pointer;
+    }
+
+}

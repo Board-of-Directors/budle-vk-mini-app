@@ -1,0 +1,6 @@
+.wrapper {
+    @apply w-full flex flex-row items-center justify-between;
+    .icon {
+        @apply stroke-text-budle-black;
+    }
+}

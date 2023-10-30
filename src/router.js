@@ -21,6 +21,23 @@ export const router = createBrowserRouter([
         panel: 'establishment_list_panel',
         view: 'main_view'
     },
+
+    {
+        path: '/user-menu',
+        panel: 'user_menu_panel',
+        view: 'main_view'
+    },
+    {
+        path: '/user-menu/orders',
+        panel: 'user_menu_orders_panel',
+        view: 'main_view'
+    },
+    {
+        path: '/user-menu/settings',
+        panel: 'settings',
+        view: 'main_view'
+    },
+    
     {
         path: '/establishment-search',
         panel: 'establishment_search_panel',
