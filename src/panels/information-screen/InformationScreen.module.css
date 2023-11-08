@@ -1,25 +1,25 @@
 .wrapper {
 
-    @apply w-full h-screen bg-fill-budle-white flex justify-center items-center;
+    @apply w-full flex flex-col gap-5 h-screen bg-fill-budle-white items-center;
 
     .image {
-        @apply w-[250px] h-[250px] object-fill;
+        @apply w-[250px] object-fill;
     }
 
-    .mainCol {
+    .logoTextCol {
 
-        @apply flex flex-col gap-[50px];
+        @apply flex flex-col items-center justify-center gap-[30px];
 
-        .logoTextCol {
+        .logo {
+            @apply h-[40px];
+        }
 
-            @apply flex flex-col gap-4;
+        .textCol {
 
-            .logo {
-                @apply h-[60px];
-            }
+            @apply flex flex-col justify-center items-center gap-[10px];
 
-            .textCol {
-                @apply flex flex-col gap-[10px];
+            .caption {
+                @apply text-center break-words w-[300px];
             }
 
         }

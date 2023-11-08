@@ -8,41 +8,30 @@ import {filterTagsData} from "../../../entities/filter-tag-row/model/filterTagsD
 import {Panel} from "@vkontakte/vkui";
 import {useShallow} from "zustand/react/shallow";
 import {useStore} from "../../../store/Store";
+import EstablishmentListCol from "../../../entities/establishment-card-col/EstablishmentListCol";
+import FilterButton from "../../../shared/buttons/filter-button/FilterButton";
 
 const EstablishmentListScreen = (props) => {
 
     const [inputText, setText] = useState("")
     const [activeTag, setActive] = useState(filterTagsData[0])
-
-    const [establishments, getAllEstablishments] = useStore(
-        useShallow((state) => [state.establishments, state.getAllEstablishments])
-    )
-
-    useEffect(() => {
-        getAllEstablishments()
-    }, [establishments])
-
-    useEffect(() => {
-        console.log(establishments)
-    }, [establishments])
+    const [isFilterPopupVisible, setFilterPopupVisible] = useState(false)
 
     return (
-        <Panel nav={props.nav}>
-            <div className={style.wrapper}>
-                <SearchBarRow onChange={(text) => setText(text)}/>
+        <div className={style.wrapper}>
+            <SearchBarRow onChange={(text) => setText(text)}/>
+            <div className={style.filterRow}>
+                <FilterButton onClick={() => setFilterPopupVisible(true)}/>
                 <FilterTagRow
                     tagList={filterTagsData}
                     activeTag={activeTag}
                     setActive={(tag) => setActive(tag)}
                 />
-                <EstablishmentCardRow
-                    establishments={establishments}
-                    category={"Рестораны"}
-                    amount={`Всего ${establishments.length}`}
-                />
             </div>
-        </Panel>
+            <EstablishmentListCol />
+        </div>
     )
+
 }
 
 export default EstablishmentListScreen

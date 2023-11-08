@@ -8,6 +8,17 @@ import {createRoot} from "react-dom/client"
 import {router} from "./router"
 import {RouterProvider} from "@vkontakte/vk-mini-apps-router";
 
+if (localStorage.getItem("notificationAllowed") === null) {
+    bridge.send('VKWebAppAllowNotifications')
+        .then((data) => {
+            if (data.result) {
+                localStorage.setItem("notificationAllowed", "true")
+                console.log("Пользователь разрешил уведомления")
+            } else console.log("Пользователь не разрешил уведомления")
+        })
+        .catch((error) => console.log(error))
+}
+
 bridge.send("VKWebAppInit").then((data) => {
     console.log(data.result)
 }).catch((error) => {

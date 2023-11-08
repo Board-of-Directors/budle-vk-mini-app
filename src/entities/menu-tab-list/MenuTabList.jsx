@@ -16,7 +16,7 @@ const MenuTabList = () => {
         {
             name: "Настройки",
             icon: <FiSettings className={style.icon}/>,
-            onClick: () => routeNavigator.push("/settings")
+            onClick: () => routeNavigator.push("/user-menu/settings")
         },
         {
             name: "Мои брони",

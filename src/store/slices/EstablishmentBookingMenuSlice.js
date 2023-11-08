@@ -9,6 +9,11 @@ export const establishmentBookingMenuSlice = (set, get) => ({
     selectedDayTag: {dayName: "", monthName: "", dayNumber: "", times: []},
     selectedTime: {id: 0, name: ""},
 
+    bookingStatus: undefined,
+
+    setBookingStatus: (status) => set({
+        bookingStatus: status
+    }),
     setGuestAmount: (number) => set(() => ({
         guestAmount: number
     })),
@@ -33,15 +38,28 @@ export const establishmentBookingMenuSlice = (set, get) => ({
 
     postOrder: async () => {
 
+        const date = new Date()
+        const currentDayNumber = date.getDay()
+        const currentMonthNumber = date.getMonth() + 1
+
+        const dayNumber = get().selectedDayTag.dayNumber
+        const validDayNumber = dayNumber.length === 1 ? `0${dayNumber}` : dayNumber
+
+        const validMonthNumber = currentDayNumber > parseInt(dayNumber)
+            ? currentMonthNumber + 1 : currentMonthNumber
+
         const order = {
             guestCount: get().guestAmount,
-            date: `2023-10-${get().selectedDayTag.dayNumber}`,
+            date: `2023-${validMonthNumber}-${validDayNumber}`,
             time: get().selectedTime.name,
             establishmentId: get().establishment.id
         }
 
-        const response = await api.post("/order", order)
-        console.log(response)
+        await api.post("/user/order/create", order)
+            .then((response) => {
+                const error = response.data.exception
+                error === null ? get().setBookingStatus(true) : get().setBookingStatus(false)
+            }).catch((error) => console.log(error))
 
     }
 

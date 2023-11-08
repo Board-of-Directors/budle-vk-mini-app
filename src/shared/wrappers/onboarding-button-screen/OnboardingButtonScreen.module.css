@@ -4,7 +4,7 @@
 
     .topRow {
 
-        @apply w-full flex flex-row items-center justify-center gap-[30px];
+        @apply w-full flex flex-row items-center justify-center gap-[20px];
 
         .icon {
 
@@ -17,7 +17,7 @@
         }
 
         .logo {
-            @apply h-[50px];
+            @apply h-[40px];
         }
 
     }
@@ -27,7 +27,7 @@
     }
 
     .button {
-        @apply absolute mx-[300px] w-full top-[530px];
+        @apply absolute mx-[300px] w-full px-[30px] top-[530px];
     }
 
 }

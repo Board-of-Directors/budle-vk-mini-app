@@ -5,10 +5,10 @@ import {establishmentListSlice} from "./slices/EstablishmentListSlice";
 import {authorisationSlice} from "./slices/AuthorisationSlice";
 import {userBookingSlice} from "./slices/userBookingSlice";
 
-export const useStore = create((set, get) => ({
-    ...establishmentCardInfoSlice(set),
-    ...establishmentBookingMenuSlice(set, get),
-    ...userBookingSlice(set, get),
-    ...establishmentListSlice(set, get),
-    ...authorisationSlice(set, get)
+export const useStore = create((set,get) => ({
+...establishmentCardInfoSlice(set),
+...establishmentBookingMenuSlice(set, get),
+...userBookingSlice(set, get),
+...establishmentListSlice(set, get),
+...authorisationSlice(set, get)
 }))

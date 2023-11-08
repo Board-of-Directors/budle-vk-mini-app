@@ -1,6 +1,6 @@
 .wrapper {
 
-    @apply w-[150px] h-[150px] flex flex-col justify-end rounded-2xl relative flex-shrink-0 bg-orange-500;
+    @apply w-full h-[140px] flex flex-col justify-between rounded-2xl relative;
 
     &:hover {
         @apply cursor-pointer;
@@ -8,10 +8,16 @@
 
     .content {
 
-        @apply p-[15px] flex flex-col justify-end absolute z-30;
+        @apply w-full h-[140px] flex flex-col justify-between p-[20px] absolute z-30;
 
-        .bottomCol {
-            @apply flex flex-col gap-2;
+        .bottomRow {
+
+            @apply flex flex-row justify-between items-center;
+
+            .bottomCol {
+                @apply flex flex-col;
+            }
+
         }
 
     }
@@ -21,7 +27,7 @@
     }
 
     .gradient {
-        @apply w-[150px] h-[150px] bg-text-budle-black opacity-40 absolute z-20 rounded-2xl;
+        @apply w-full h-[140px] bg-text-budle-black opacity-40 absolute z-20 rounded-2xl;
     }
 
 }

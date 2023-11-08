@@ -10,9 +10,14 @@ export const userBookingSlice = (set, get) => ({
     ],
 
     orderList: [],
+    selectedStatusTag: {id: 3, name: "Все"},
+
+    selectStatusTag: (statusTag) => set(() => ({
+        selectedStatusTag: statusTag
+    })),
 
     getOrders: async (status) => {
-        await api.get("/order", {
+        await api.get("/user/order", {
             params: {
                 userId: 0,
                 status: status === 3 ? null : status
@@ -22,6 +27,17 @@ export const userBookingSlice = (set, get) => ({
             console.log(response)
         })
             .catch((error) => console.log(error))
+    },
+
+    deleteOrder: async (orderId) => {
+        await api.delete("/user/order", {
+            params: {
+                userId: 0,
+                orderId: orderId
+            }
+        }).then((response) => console.log(response))
+            .catch((error) => console.log(error))
+        await get().getOrders(get().selectedStatusTag.id)
     }
 
 })

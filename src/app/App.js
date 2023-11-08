@@ -10,6 +10,7 @@ import InformationScreen from "../panels/information-screen/InformationScreen";
 import EstablishmentSearchScreen from "../panels/establishment-search/EstablishmentSearchScreen";
 import UserProfileMenuScreen from "../panels/user-menu/user-profile-menu/UserProfileMenuScreen";
 import UserOrdersScreen from "../panels/user-menu/user-orders/UserOrdersScreen";
+import UserSettingsScreen from "../panels/user-menu/user-settings/UserSettingsScreen";
 
 const App = () => {
 
@@ -31,15 +32,7 @@ const App = () => {
 
                 <UserProfileMenuScreen nav={'user_menu_panel'}/>
                 <UserOrdersScreen nav={'user_menu_orders_panel'}/>
-
-                <InformationScreen
-                    nav={'information_panel'}
-                    icon={"success-rocket.png"}
-                    header={`Регистрация прошла успешно!
-                        Приступаем к бронированию`}
-                    buttonText={"Завершить регистрацию"}
-                    route={"/establishment-list"}
-                />
+                <UserSettingsScreen nav={'user_menu_settings_panel'}/>
 
             </View>
         </Root>

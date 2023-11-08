@@ -3,6 +3,8 @@ import {FiArrowLeft} from "react-icons/fi";
 import {useRouteNavigator} from "@vkontakte/vk-mini-apps-router";
 import Button from "../../buttons/button/Button";
 
+import BudleLogo from "../../../images/budle-logo.svg"
+
 const OnboardingButtonScreen = (props) => {
 
     const routeNavigator = useRouteNavigator()
@@ -16,7 +18,7 @@ const OnboardingButtonScreen = (props) => {
                     className={style.icon}
                     onClick={() => routeNavigator.back()}
                 />
-                <img src={"budle-logo.svg"} className={style.logo} alt={"/"}/>
+                <img src={BudleLogo} className={style.logo} alt={"/"}/>
             </div>
 
             <div className={style.content}>
@@ -24,7 +26,10 @@ const OnboardingButtonScreen = (props) => {
             </div>
 
             <div className={style.button}>
-                <Button text={props.buttonText} onClick={() => props.onClick()} />
+                <Button
+                    text={props.buttonText}
+                    onClick={() => props.onClick()}
+                />
             </div>
 
         </div>

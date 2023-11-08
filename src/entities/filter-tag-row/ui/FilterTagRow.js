@@ -1,6 +1,5 @@
 import style from "./FilterTagRow.module.css"
 import {FilterTag} from "../../../shared/tags/filter-tag/FilterTag";
-import {filterTagsData} from "../model/filterTagsData";
 
 export const FilterTagRow = (props) => {
     return (

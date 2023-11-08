@@ -1,3 +1,4 @@
 .wrapper {
-    @apply flex flex-row gap-[10px] items-center;
+    @apply w-full flex flex-row gap-[10px] items-center
+    overflow-x-scroll whitespace-nowrap;
 }

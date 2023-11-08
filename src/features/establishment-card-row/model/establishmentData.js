@@ -4,7 +4,7 @@ export const establishmentData = [
         name: "Горячий Цех",
         category: "Рестораны",
         rating: 4.7,
-        image: "image-1.png"
+        image: "mock-est-image.png"
     },
     {
         id: 2,
@@ -25,48 +25,48 @@ export const establishmentData = [
         name: "Финтифлюшная",
         category: "Рестораны",
         rating: 4.0,
-        image: "image-1.png"
+        image: "mock-est-image.png"
     },
     {
         id: 5,
         name: "Финтифлюшная",
         category: "Рестораны",
         rating: 4.0,
-        image: "image-1.png"
+        image: "mock-est-image.png"
     },
     {
         id: 6,
         name: "Финтифлюшная",
         category: "Рестораны",
         rating: 4.0,
-        image: "image-1.png"
+        image: "mock-est-image.png"
     },
     {
         id: 7,
         name: "Финтифлюшная",
         category: "Рестораны",
         rating: 4.0,
-        image: "image-1.png"
+        image: "mock-est-image.png"
     },
     {
         id: 8,
         name: "Финтифлюшная",
         category: "Рестораны",
         rating: 4.0,
-        image: "image-1.png"
+        image: "mock-est-image.png"
     },
     {
         id: 9,
         name: "Финтифлюшная",
         category: "Рестораны",
         rating: 4.0,
-        image: "image-1.png"
+        image: "mock-est-image.png"
     },
     {
         id: 10,
         name: "Финтифлюшная",
         category: "Рестораны",
         rating: 4.0,
-        image: "image-1.png"
+        image: "mock-est-image.png"
     },
 ]

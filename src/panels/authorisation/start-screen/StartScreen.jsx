@@ -6,6 +6,9 @@ import {Panel} from "@vkontakte/vkui";
 import TextL from "../../../shared/text/text-l/TextL";
 import CenterContentScreen from "../../../shared/wrappers/center-content-screen/CenterContentScreen";
 
+import MapStartIcon from "../../../images/start-icon.png"
+import BudleLogo from "../../../images/budle-logo.svg"
+
 const StartScreen = ({nav}) => {
 
     const routeNavigator = useRouteNavigator()
@@ -13,10 +16,10 @@ const StartScreen = ({nav}) => {
     return (
         <Panel nav={nav}>
             <CenterContentScreen>
-                <img src={"start-icon.png"} className={style.startIcon} alt={'/'} />
+                <img src={MapStartIcon} className={style.startIcon} alt={'/'} />
 
                 <div className={style.logoTextCol}>
-                    <img src={"budle-logo.svg"} className={style.logoIcon} alt={'/'} />
+                    <img src={BudleLogo} className={style.logoIcon} alt={'/'} />
                     <div className={style.caption}>
                         <TextL text={"Бронируйте места в пару кликов!"} />
                     </div>

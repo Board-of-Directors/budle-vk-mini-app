@@ -1,7 +1,5 @@
 import bridge from "@vkontakte/vk-bridge";
-import axios from "axios";
 import {api} from "../../api/api";
-import Cookies from "js-cookie";
 
 export const authorisationSlice = (set, get) => ({
 
@@ -34,21 +32,36 @@ export const authorisationSlice = (set, get) => ({
 
     registerUser: async () => {
 
-        const response = await api.post("/user/register", {
+        return api.post("/user/register", {
             password: get().password,
             username: get().nickname,
             phoneNumber: get().phoneNumber
         })
-
-        console.log(response)
+            .then((response) => response.data.exception !== null)
+            .catch((error) => console.log(error))
 
     },
 
     loginUser: async () => {
-        await api.post("/user/login", {
+        return api.post("/user/login", {
             username: get().nickname,
             password: get().password
         })
+            .then((response) => {
+                localStorage.setItem("isAuthorized", "true")
+                return response.data.exception !== null
+            })
+            .catch((error) => console.log(error))
+    },
+
+    getUser: async () => {
+        await api.get("/user/me")
+            .then((response) => {
+                const userInfo = response.data.result
+                console.log(userInfo)
+                set({phoneNumber: userInfo.phoneNumber})
+            })
+            .catch((error) => console.log(error))
     }
 
 })

@@ -3,7 +3,7 @@ import {useState} from "react";
 import TextM from "../../text/text-m/TextM";
 import PasswordEyeButton from "../../buttons/password-eye-button/PasswordEyeButton";
 
-const TextInput = ({label, placeholder, onChange, _type = "text"}) => {
+const TextInput = ({label, placeholder, onChange, value, _type = "text"}) => {
 
     const [type, setType] = useState(_type)
     const toggledType = type === "password" ? "text" : "password"
@@ -20,6 +20,7 @@ const TextInput = ({label, placeholder, onChange, _type = "text"}) => {
                         : null
                 }
                 <input
+                    value={value}
                     className={style.input}
                     placeholder={placeholder}
                     onChange={(event) => onChange(event.target.value)}
