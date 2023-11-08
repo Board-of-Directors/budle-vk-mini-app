@@ -6,7 +6,7 @@ const LikeButton = (props) => {
         <div
             className={style.wrapper}
             onClick={() => props.setLiked()}
-            isLiked={props.isLiked}
+            isliked={props.isLiked}
         >
             <FiHeart
                 size={"16px"}

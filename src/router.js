@@ -32,7 +32,19 @@ export const router = createBrowserRouter([
         panel: 'user_menu_settings_panel',
         view: 'main_view'
     },
-    
+
+    {
+        path: '/user-menu/notifications',
+        panel: 'user_menu_notifications_panel',
+        view: 'main_view'
+    },
+
+    {
+        path: '/user-menu/favorites',
+        panel: 'user_menu_favorites_panel',
+        view: 'main_view'
+    },
+
     {
         path: '/establishment-search',
         panel: 'establishment_search_panel',

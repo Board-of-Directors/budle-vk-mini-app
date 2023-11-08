@@ -19,14 +19,20 @@ export const EstablishmentCard = ({card, fullWidth = false}) => {
         <div
             style={{width: fullWidth ? "100%" : "150px"}}
             className={style.wrapper}
-            onClick={() => routeNavigator.push(`/establishment-card?id=${card.id}`)}
         >
 
-            <img src={MockImage} className={style.image} alt={"/"}/>
+            <img
+                src={MockImage}
+                className={style.image}
+                alt={"/"}
+            />
 
             <div className={style.gradient}/>
 
-            <div className={style.content}>
+            <div
+                className={style.content}
+                onClick={() => routeNavigator.push(`/establishment-card?id=${card.id}`)}
+            >
 
                 <DescrTag descr={card.rating}/>
 
@@ -39,15 +45,17 @@ export const EstablishmentCard = ({card, fullWidth = false}) => {
                         />
 
                     </div>
-                    <LikeButton
-                        isLiked={isLiked}
-                        setLiked={() => setIsLiked(
-                            prevState => prevState === 1 ? 0 : 1
-                        )}
-                    />
+
                 </div>
 
             </div>
+
+            <LikeButton
+                isLiked={isLiked}
+                setLiked={() => setIsLiked(
+                    prevState => prevState === 1 ? 0 : 1
+                )}
+            />
 
         </div>
     )

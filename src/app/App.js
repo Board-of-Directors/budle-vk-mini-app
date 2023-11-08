@@ -6,11 +6,11 @@ import EstablishmentCardScreen from "../panels/establishment-card/ui/Establishme
 import BookingMenuScreen from "../panels/booking-menu/ui/BookingMenuScreen";
 import StartScreen from "../panels/authorisation/start-screen/StartScreen";
 import AuthorizationScreen from "../panels/authorisation/authorization-screen/AuthorizationScreen";
-import InformationScreen from "../panels/information-screen/InformationScreen";
 import EstablishmentSearchScreen from "../panels/establishment-search/EstablishmentSearchScreen";
 import UserProfileMenuScreen from "../panels/user-menu/user-profile-menu/UserProfileMenuScreen";
 import UserOrdersScreen from "../panels/user-menu/user-orders/UserOrdersScreen";
 import UserSettingsScreen from "../panels/user-menu/user-settings/UserSettingsScreen";
+import UserNotificationsScreen from "../panels/user-menu/user-notifications/UserNotificationsScreen";
 
 const App = () => {
 
@@ -33,6 +33,7 @@ const App = () => {
                 <UserProfileMenuScreen nav={'user_menu_panel'}/>
                 <UserOrdersScreen nav={'user_menu_orders_panel'}/>
                 <UserSettingsScreen nav={'user_menu_settings_panel'}/>
+                <UserNotificationsScreen nav={'user_menu_notifications_panel'} />
 
             </View>
         </Root>

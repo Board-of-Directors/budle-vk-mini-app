@@ -1,6 +1,6 @@
 import style from "./SearchBarRow.module.css"
 import SearchBar from "../../../shared/inputs/search-bar/SearchBar";
-import {FiMap, FiMenu, FiX} from "react-icons/fi";
+import {FiBell, FiMenu} from "react-icons/fi";
 import {useRouteNavigator} from "@vkontakte/vk-mini-apps-router";
 
 export const SearchBarRow = ({isExpanded = false, onClick, ...props}) => {
@@ -17,7 +17,11 @@ export const SearchBarRow = ({isExpanded = false, onClick, ...props}) => {
             />
             {
                 isExpanded ? null : <div className={style.iconRow}>
-                    <FiMap size={"20px"} className={style.icon}/>
+                    <FiBell
+                        size={"20px"}
+                        className={style.icon}
+                        onClick={() => routeNavigator.push("/user-menu/notifications")}
+                    />
                     <FiMenu
                         size={"20px"}
                         className={style.icon}

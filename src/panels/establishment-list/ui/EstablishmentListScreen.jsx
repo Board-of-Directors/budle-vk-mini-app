@@ -10,26 +10,45 @@ import {useShallow} from "zustand/react/shallow";
 import {useStore} from "../../../store/Store";
 import EstablishmentListCol from "../../../entities/establishment-card-col/EstablishmentListCol";
 import FilterButton from "../../../shared/buttons/filter-button/FilterButton";
+import NotificationCard from "../../../entities/notification-card/NotificationCard";
+import {MockNotification} from "../../../mock-data/MockNotification";
+import {useSSE} from "../../../api/sse";
+import NotificationPopup from "../../../features/notification-popup/NotificationPopup";
 
 const EstablishmentListScreen = (props) => {
 
     const [inputText, setText] = useState("")
     const [activeTag, setActive] = useState(filterTagsData[0])
+
     const [isFilterPopupVisible, setFilterPopupVisible] = useState(false)
+    const [isNotificationPopupVisible, setNotificationPopupVisible] = useState(true)
+
+    useEffect(() => {
+        useSSE()
+    }, [])
 
     return (
-        <div className={style.wrapper}>
-            <SearchBarRow onChange={(text) => setText(text)}/>
-            <div className={style.filterRow}>
-                <FilterButton onClick={() => setFilterPopupVisible(true)}/>
-                <FilterTagRow
-                    tagList={filterTagsData}
-                    activeTag={activeTag}
-                    setActive={(tag) => setActive(tag)}
+        <>
+            {
+                isNotificationPopupVisible &&
+                <NotificationPopup
+                    notification={MockNotification}
+                    onClose={() => setNotificationPopupVisible(false)}
                 />
+            }
+            <div className={style.wrapper}>
+                <SearchBarRow onChange={(text) => setText(text)}/>
+                <div className={style.filterRow}>
+                    <FilterButton onClick={() => setFilterPopupVisible(true)}/>
+                    <FilterTagRow
+                        tagList={filterTagsData}
+                        activeTag={activeTag}
+                        setActive={(tag) => setActive(tag)}
+                    />
+                </div>
+                <EstablishmentListCol/>
             </div>
-            <EstablishmentListCol />
-        </div>
+        </>
     )
 
 }
