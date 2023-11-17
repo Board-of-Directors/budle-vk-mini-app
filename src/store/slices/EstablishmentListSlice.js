@@ -1,6 +1,4 @@
-import axios from "axios";
 import {api} from "../../api/api";
-import Cookies from "js-cookie";
 
 export const establishmentListSlice = (set, get) => ({
 

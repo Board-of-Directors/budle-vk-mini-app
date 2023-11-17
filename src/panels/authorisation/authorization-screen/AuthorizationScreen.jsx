@@ -9,7 +9,7 @@ import PhoneInput from "../../../shared/inputs/phone-input/PhoneInput";
 import SuccessCake from "../../../images/success-cake.png"
 import InformationScreen from "../../information-screen/InformationScreen";
 import CenterContentScreen from "../../../shared/wrappers/center-content-screen/CenterContentScreen";
-import {useSSE} from "../../../api/sse";
+import {useMutation} from "react-query";
 
 const AuthorizationScreen = ({nav}) => {
 
@@ -17,84 +17,84 @@ const AuthorizationScreen = ({nav}) => {
     const {type} = useParams()
 
     // actions
-    const [setNickname, setPassword, getPhoneNumberFromVK,
-        registerUser, loginUser, setPhoneNumber] = useStore(
+    const [setNickname, setPassword, getPhoneNumberFromVK, setPhoneNumber] = useStore(
         useShallow(state => {
-            return [state.setNickname, state.setPassword, state.getPhoneNumberFromVK,
-                state.registerUser, state.loginUser, state.setPhoneNumber]
+            return [state.setNickname, state.setPassword,
+                state.getPhoneNumberFromVK, state.setPhoneNumber]
         })
     )
+
+    // api actions
+    const [loginUser, registerUser] = useStore(
+        useShallow(state => [state.loginUser, state.registerUser])
+    )
+
+    const registerUserMutation = useMutation({
+        mutationKey: ["register"],
+        mutationFn: () => registerUser()
+            .then((isRegisterError) => !isRegisterError
+                && setRegisterSuccess(true))
+            .catch((error) => console.log(error))
+    })
+
+    const loginUserMutation = useMutation({
+        mutationKey: ["login"],
+        mutationFn: () => loginUser().then((isLoginError) => !isLoginError
+            && routeNavigator.push("/establishment-list"))
+    })
 
     // states
-    const [userDenied, phoneNumber] = useStore(
-        useShallow((state) => {
-            return [state.userDenied, state.phoneNumber]
-        })
-    )
-
+    const phoneNumber = useStore(state => state.phoneNumber)
     const [registerSuccess, setRegisterSuccess] = useState(false)
 
     useEffect(() => {
-        type === "sign-in" ? getPhoneNumberFromVK() : null
+        type === "sign-in" && getPhoneNumberFromVK()
     }, [])
 
-    useEffect(() => {
-        console.log(registerSuccess)
-    }, [registerSuccess])
-
     const onSubmit = () => {
-        if (type === "sign-in") {
-            registerUser().then((isRegisterError) => {
-                console.log(isRegisterError)
-                !isRegisterError && setRegisterSuccess(true)
-            })
-                .catch((error) => console.log(error))
-        } else if (type === "log-in") {
-            loginUser().then((isLoginError) => {
-                !isLoginError && routeNavigator.push("/establishment-list")
-            })
-        }
+        if (type === "sign-in") registerUserMutation.mutate()
+        else if (type === "log-in") loginUserMutation.mutate()
     }
+
+    if (registerSuccess) return (
+        <CenterContentScreen>
+            <InformationScreen
+                icon={SuccessCake}
+                header={"Регистрация прошла успешно!"}
+                caption={"Теперь вы можете приступить к бронированию"}
+                buttonText={"Перейти"}
+                onClick={() => routeNavigator.push("/establishment-list")}
+            />
+        </CenterContentScreen>
+    )
 
     return (
         <Panel nav={nav}>
-            {
-                registerSuccess ?
-                    <CenterContentScreen>
-                        <InformationScreen
-                            icon={SuccessCake}
-                            header={"Регистрация прошла успешно!"}
-                            caption={"Теперь вы можете приступить к бронированию"}
-                            buttonText={"Перейти"}
-                            onClick={() => routeNavigator.push("/establishment-list")}
-                        />
-                    </CenterContentScreen> :
-                    <OnboardingButtonScreen
-                        buttonText={"Подтвердить"}
-                        onClick={() => onSubmit()}
-                    >
-                        {
-                            type === "sign-in" ?
-                                <PhoneInput
-                                    label={"Номер телефона"}
-                                    placeholder={"+7 (000) 000-00-00"}
-                                    onChange={(phoneNumber) => setPhoneNumber(phoneNumber)}
-                                    value={userDenied ? "" : phoneNumber}
-                                /> : null
-                        }
-                        <TextInput
-                            label={"Имя пользователя"}
-                            placeholder={"Иванов Иван Иванович"}
-                            onChange={(text) => setNickname(text)}
-                        />
-                        <TextInput
-                            label={"Пароль"}
-                            placeholder={"Введите пароль"}
-                            onChange={(password) => setPassword(password)}
-                            _type={"password"}
-                        />
-                    </OnboardingButtonScreen>
-            }
+            <OnboardingButtonScreen
+                buttonText={"Подтвердить"}
+                onClick={onSubmit}
+            >
+                {
+                    type === "sign-in" ?
+                        <PhoneInput
+                            label={"Номер телефона"}
+                            placeholder={"+7 (000) 000-00-00"}
+                            onChange={setPhoneNumber}
+                            value={phoneNumber}
+                        /> : null
+                }
+                <TextInput
+                    label={"Имя пользователя"}
+                    placeholder={"Иванов Иван Иванович"}
+                    onChange={setNickname}
+                />
+                <TextInput
+                    label={"Пароль"}
+                    placeholder={"Введите пароль"}
+                    onChange={setPassword}
+                    _type={"password"}
+                />
+            </OnboardingButtonScreen>
         </Panel>
     )
 }

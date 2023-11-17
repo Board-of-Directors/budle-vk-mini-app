@@ -1,0 +1,31 @@
+.wrapper {
+    @apply w-full p-[20px]  flex flex-col rounded-xl border-2
+    border-background-budle-light-blue bg-fill-budle-white gap-[20px];
+}
+
+.nestedWrapper {
+    @apply w-full flex flex-col gap-[20px];
+}
+
+.estNameTimeRow {
+    @apply w-full flex flex-row justify-between;
+}
+
+.divider {
+    @apply w-full flex flex-row items-center justify-center gap-[12px];
+}
+
+.bookingInfoCol {
+    @apply w-full flex flex-col gap-[15px];
+    .infoRow {
+        @apply w-full flex flex-row justify-between;
+    }
+}
+
+.messageCol {
+    @apply w-full flex flex-col gap-[10px];
+}
+
+.buttonRow {
+    @apply w-full flex flex-row items-center gap-[10px];
+}

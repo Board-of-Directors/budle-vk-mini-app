@@ -9,7 +9,10 @@ const PhoneInput = (props) => {
             <InputMask
                 value={props.value}
                 placeholder={props.placeholder}
-                onChange={(event) => props.onChange(event.target.value)}
+                onChange={(event) => {
+                    props.onChange(event.target.value)
+                    console.log(event.target.value)
+                }}
                 className={style.input}
                 mask={"+9 (999) 999-99-99"}
             />

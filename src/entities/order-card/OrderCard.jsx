@@ -22,7 +22,7 @@ const OrderCard = ({orderCard}) => {
         {header: "Начало", data: startTime},
         {header: "Конец", data: endTime},
         {header: "Количество гостей", data: orderCard.guestCount},
-        {header: "Бронь на имя", data: orderCard.username},
+        {header: "Бронь на имя", data: orderCard.guestName},
     ]
 
     return (

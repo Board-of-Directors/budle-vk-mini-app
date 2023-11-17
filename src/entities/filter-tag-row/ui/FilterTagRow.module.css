@@ -1,4 +1,4 @@
 .wrapper {
     @apply w-full flex flex-row gap-[10px] items-center
-    overflow-x-scroll whitespace-nowrap;
+    overflow-x-scroll whitespace-nowrap scrollbar-hide;
 }

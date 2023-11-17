@@ -9,11 +9,23 @@ import {useState} from "react";
 import MockImage from "../../../images/mock-est-image.png"
 import TextM from "../../../shared/text/text-m/TextM";
 import {useRouteNavigator} from "@vkontakte/vk-mini-apps-router";
+import {useShallow} from "zustand/react/shallow";
+import {useStore} from "../../../store/Store";
 
 export const EstablishmentCard = ({card, fullWidth = false}) => {
 
     const [isLiked, setIsLiked] = useState(0)
     const routeNavigator = useRouteNavigator()
+
+    const [addToFavorites, removeFromFavorites] = useStore(
+        useShallow(state => [state.addToFavorites, state.removeFromFavorites])
+    )
+
+    const handleLike = () => {
+        if (isLiked === 0) addToFavorites(card.id)
+        else removeFromFavorites(card.id)
+        setIsLiked(prevState => prevState === 0 ? 1 : 0)
+    }
 
     return (
         <div
@@ -21,10 +33,9 @@ export const EstablishmentCard = ({card, fullWidth = false}) => {
             className={style.wrapper}
         >
 
-            <img
-                src={MockImage}
+            <Base64Image
+                data={card.image}
                 className={style.image}
-                alt={"/"}
             />
 
             <div className={style.gradient}/>
@@ -52,9 +63,7 @@ export const EstablishmentCard = ({card, fullWidth = false}) => {
 
             <LikeButton
                 isLiked={isLiked}
-                setLiked={() => setIsLiked(
-                    prevState => prevState === 1 ? 0 : 1
-                )}
+                setLiked={() => handleLike()}
             />
 
         </div>

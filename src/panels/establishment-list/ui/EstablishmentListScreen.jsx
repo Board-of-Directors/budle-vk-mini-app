@@ -21,7 +21,7 @@ const EstablishmentListScreen = (props) => {
     const [activeTag, setActive] = useState(filterTagsData[0])
 
     const [isFilterPopupVisible, setFilterPopupVisible] = useState(false)
-    const [isNotificationPopupVisible, setNotificationPopupVisible] = useState(true)
+    const [isNotificationPopupVisible, setNotificationPopupVisible] = useState(false)
 
     useEffect(() => {
         useSSE()

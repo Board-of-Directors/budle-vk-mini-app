@@ -18,17 +18,17 @@ export const authorisationSlice = (set, get) => ({
             .catch(() => set({userDenied: true}))
     },
 
-    setPhoneNumber: (phoneNumber) => set(() => ({
+    setPhoneNumber: (phoneNumber) => set({
         phoneNumber: phoneNumber
-    })),
+    }),
 
-    setNickname: (nickname) => set(() => ({
+    setNickname: (nickname) => set({
         nickname: nickname
-    })),
+    }),
 
-    setPassword: (password) => set(() => ({
+    setPassword: (password) => set({
         password: password
-    })),
+    }),
 
     registerUser: async () => {
 

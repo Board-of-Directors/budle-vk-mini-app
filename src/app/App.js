@@ -11,6 +11,7 @@ import UserProfileMenuScreen from "../panels/user-menu/user-profile-menu/UserPro
 import UserOrdersScreen from "../panels/user-menu/user-orders/UserOrdersScreen";
 import UserSettingsScreen from "../panels/user-menu/user-settings/UserSettingsScreen";
 import UserNotificationsScreen from "../panels/user-menu/user-notifications/UserNotificationsScreen";
+import UserFavoritesScreen from "../panels/user-menu/user-favorites/UserFavoritesScreen";
 
 const App = () => {
 
@@ -31,6 +32,7 @@ const App = () => {
                 <BookingMenuScreen nav={'booking_menu_panel'}/>
 
                 <UserProfileMenuScreen nav={'user_menu_panel'}/>
+                <UserFavoritesScreen nav={'user_menu_favorites_panel'} />
                 <UserOrdersScreen nav={'user_menu_orders_panel'}/>
                 <UserSettingsScreen nav={'user_menu_settings_panel'}/>
                 <UserNotificationsScreen nav={'user_menu_notifications_panel'} />

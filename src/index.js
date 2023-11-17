@@ -7,6 +7,7 @@ import {AdaptivityProvider, AppRoot, ConfigProvider} from "@vkontakte/vkui";
 import {createRoot} from "react-dom/client"
 import {router} from "./router"
 import {RouterProvider} from "@vkontakte/vk-mini-apps-router";
+import {QueryClient, QueryClientProvider} from "react-query";
 
 if (localStorage.getItem("notificationAllowed") === null) {
     bridge.send('VKWebAppAllowNotifications')
@@ -26,17 +27,20 @@ bridge.send("VKWebAppInit").then((data) => {
 })
 
 const root = createRoot(document.getElementById("root"))
+const queryClient = new QueryClient();
 
 root.render(
-    <ConfigProvider appearance={"light"}>
-        <AdaptivityProvider>
-            <AppRoot>
-                <RouterProvider router={router}>
-                    <App/>
-                </RouterProvider>
-            </AppRoot>
-        </AdaptivityProvider>
-    </ConfigProvider>
+    <QueryClientProvider client={queryClient}>
+        <ConfigProvider appearance={"light"}>
+            <AdaptivityProvider>
+                <AppRoot>
+                    <RouterProvider router={router}>
+                        <App/>
+                    </RouterProvider>
+                </AppRoot>
+            </AdaptivityProvider>
+        </ConfigProvider>
+    </QueryClientProvider>
 )
 
 if (process.env.NODE_ENV === "development") {

@@ -4,7 +4,7 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans : ['Gilroy', 'sans-serif']
+                sans: ['Gilroy', 'sans-serif']
             },
             colors: {
                 "fill": {
@@ -26,6 +26,10 @@ module.exports = {
             }
         },
     },
-    plugins: [require('tailwind-scrollbar-hide')],
+    plugins: [
+        require('tailwind-scrollbar-hide'),
+        require('tailwindcss'),
+        require('autoprefixer')
+    ]
 }
 
