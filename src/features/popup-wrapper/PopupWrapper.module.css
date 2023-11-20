@@ -1,0 +1,22 @@
+.popupWrapper {
+
+    @apply fixed z-40 p-[20px] bg-black bg-opacity-50 w-full h-screen;
+
+    .layoutWrapper {
+
+        @apply absolute top-1/4 mr-[20px];
+
+        .wrapper {
+
+            @apply w-full p-[25px] flex flex-col items-center
+            rounded-xl bg-fill-budle-white gap-[25px];
+
+            .headerCloseRow {
+                @apply w-full flex flex-row justify-between items-center;
+            }
+
+        }
+
+    }
+
+}

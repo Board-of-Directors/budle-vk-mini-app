@@ -1,0 +1,4 @@
+.button {
+    @apply w-fit h-full px-[15px] py-[10px] flex items-center
+    rounded-xl bg-background-budle-light-blue;
+}

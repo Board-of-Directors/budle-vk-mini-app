@@ -1,0 +1,3 @@
+.wrapper {
+    @apply flex justify-center gap-[15px] items-center w-full py-[20px] rounded-2xl bg-fill-budle-purple;
+}

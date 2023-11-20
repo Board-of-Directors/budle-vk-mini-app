@@ -1,0 +1,15 @@
+.wrapper {
+
+    @apply w-full flex flex-col gap-5 items-start;
+
+    .orderData {
+
+        @apply w-full flex flex-col items-start gap-[15px];
+
+        .infoRow {
+            @apply w-full flex flex-row justify-between items-baseline;
+        }
+
+    }
+
+}

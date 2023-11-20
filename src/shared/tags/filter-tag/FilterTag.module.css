@@ -1,0 +1,10 @@
+.tag {
+
+    @apply min-w-fit py-[10px] flex flex-row gap-[10px] items-center px-5
+    bg-fill-budle-purple rounded-xl text-fill-budle-white;
+
+    &:hover {
+        @apply cursor-pointer;
+    }
+
+}

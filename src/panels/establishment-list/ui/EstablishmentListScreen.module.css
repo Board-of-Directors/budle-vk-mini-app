@@ -1,0 +1,7 @@
+.wrapper {
+    @apply w-full flex flex-col gap-[20px] bg-white p-[20px];
+}
+
+.filterRow {
+    @apply w-full flex flex-row items-center gap-[10px];
+}

@@ -1,0 +1,29 @@
+.startIcon {
+    @apply w-[250px] h-[250px] object-fill;
+}
+
+.logoTextCol {
+
+    @apply flex flex-col items-center gap-[20px];
+
+    .logoIcon {
+        @apply h-[50px];
+    }
+
+    .caption {
+        @apply w-[200px] flex items-center text-center;
+    }
+
+}
+
+.buttonCol {
+
+    @apply w-full flex flex-col items-center gap-[20px];
+
+    .textRow {
+
+        @apply flex flex-row gap-[3px] items-baseline;
+
+    }
+
+}

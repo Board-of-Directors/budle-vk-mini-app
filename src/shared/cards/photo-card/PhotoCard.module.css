@@ -1,0 +1,23 @@
+.wrapper {
+
+    @apply w-[110px] h-[110px] rounded-2xl relative;
+
+    .overlayBox {
+
+        @apply w-[110px] h-[110px] rounded-2xl flex justify-center items-center absolute;
+
+        .restPhotos {
+            @apply absolute z-20;
+        }
+
+        .overlay {
+            @apply absolute z-10;
+        }
+
+    }
+
+    .image {
+        @apply w-[110px] h-[110px] rounded-2xl absolute;
+    }
+
+}

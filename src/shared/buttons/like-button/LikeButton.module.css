@@ -1,0 +1,36 @@
+.wrapper {
+
+    @apply z-30 absolute bottom-[20px] right-[20px] flex justify-center items-center
+    w-[26px] h-[26px] rounded-full bg-fill-budle-white bg-opacity-0;
+
+    &[isliked='1'] {
+        @apply transition duration-200 bg-opacity-30;
+    }
+
+}
+
+.icon {
+
+    @apply stroke-white;
+
+    &[isliked='1'] {
+        @apply fill-white stroke-none;
+        animation: wobble 1s 1;
+    }
+
+}
+
+@keyframes wobble {
+    25% {
+        transform: rotate(5deg);
+    }
+    50% {
+        transform: rotate(-5deg);
+    }
+    75% {
+        transform: rotate(5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}

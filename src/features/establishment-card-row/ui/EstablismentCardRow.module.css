@@ -1,0 +1,10 @@
+.col {
+
+    @apply w-full flex flex-col gap-[20px] justify-start;
+
+    .scrollbar {
+        @apply overflow-x-scroll flex flex-row gap-3;
+    }
+
+}
+

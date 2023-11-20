@@ -1,0 +1,33 @@
+.wrapper {
+
+    @apply w-full h-[140px] flex flex-col justify-between rounded-2xl relative;
+
+    &:hover {
+        @apply cursor-pointer;
+    }
+
+    .content {
+
+        @apply w-full h-[140px] flex flex-col justify-between p-[20px] absolute z-30;
+
+        .bottomRow {
+
+            @apply flex flex-row justify-between items-center;
+
+            .bottomCol {
+                @apply flex flex-col;
+            }
+
+        }
+
+    }
+
+    .image {
+        @apply w-full h-full absolute z-10 rounded-2xl object-cover;
+    }
+
+    .gradient {
+        @apply w-full h-[140px] bg-text-budle-black opacity-40 absolute z-20 rounded-2xl;
+    }
+
+}

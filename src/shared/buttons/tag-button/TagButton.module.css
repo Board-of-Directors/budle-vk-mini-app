@@ -1,0 +1,4 @@
+.tag {
+    @apply flex flex-row items-center gap-[10px] px-[20px] rounded-xl
+    py-[10px] bg-background-budle-light-blue text-fill-budle-purple;
+}

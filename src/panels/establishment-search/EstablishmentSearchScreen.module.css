@@ -1,0 +1,9 @@
+.wrapper {
+
+    @apply w-full flex flex-col gap-5 items-start h-screen bg-white p-[30px];
+
+    .cards {
+        @apply flex flex-col gap-5;
+    }
+
+}
