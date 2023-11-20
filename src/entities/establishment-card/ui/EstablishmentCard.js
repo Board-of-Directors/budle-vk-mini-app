@@ -14,7 +14,7 @@ import {useStore} from "../../../store/Store";
 
 export const EstablishmentCard = ({card, fullWidth = false}) => {
 
-    const [isLiked, setIsLiked] = useState(0)
+    const [isLiked, setIsLiked] = useState(+card.favourite)
     const routeNavigator = useRouteNavigator()
 
     const [addToFavorites, removeFromFavorites] = useStore(

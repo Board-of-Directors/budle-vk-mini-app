@@ -4,6 +4,7 @@ import {useShallow} from "zustand/react/shallow";
 import {useEffect} from "react";
 import {EstablishmentCard} from "../establishment-card/ui/EstablishmentCard";
 import TextXL from "../../shared/text/text-xl/TextXL";
+import {useQuery} from "react-query";
 
 const EstablishmentListCol = () => {
 
@@ -11,27 +12,34 @@ const EstablishmentListCol = () => {
         useShallow(state => [state.establishments, state.getAllEstablishments])
     )
 
-    const establishmentListSize = establishmentList.length
+    const establishmentsQuery = useQuery({
+        queryKey : ["establishmentAll"],
+        queryFn : getEstablishmentList,
+        refetchInterval : 1000 * 60 * 5,
+    })
 
-    useEffect(() => {
-        getEstablishmentList()
-            .then((response) => console.log(response))
-            .catch((error) => console.log(error))
-    }, [])
-
-    return (
-        <div className={style.wrapper}>
-            <TextXL text={`Мы нашли ${establishmentListSize} мест`} />
-            {
-                establishmentList.map((establishment) => {
-                    return <EstablishmentCard
-                        card={establishment}
-                        fullWidth={true}
-                    />
-                })
-            }
+    if (establishmentsQuery.status === "loading") {
+        return <div>
+            Loading..
         </div>
-    )
+    }
+
+    if (establishmentsQuery.status === "success") {
+        return (
+            <div className={style.wrapper}>
+                <TextXL text={`Мы нашли ${establishmentList.length} мест`} />
+                {
+                    establishmentList.map((establishment) => {
+                        return <EstablishmentCard
+                            card={establishment}
+                            fullWidth={true}
+                        />
+                    })
+                }
+            </div>
+        )
+    }
+
 }
 
 export default EstablishmentListCol

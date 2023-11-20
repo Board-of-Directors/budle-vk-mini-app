@@ -5,10 +5,39 @@ import Button from "../../shared/buttons/button/Button";
 import {useStore} from "../../store/Store";
 import {parseDate} from "../../lib/parseDate";
 import {parseStatus} from "../../lib/parseStatus";
+import {useShallow} from "zustand/react/shallow";
+import {useEffect} from "react";
+import {useMutation, useQuery} from "react-query";
 
 const OrderCard = ({orderCard}) => {
 
-    const deleteOrder = useStore(state => state.deleteOrder)
+    const [establishment, getEstablishment] = useStore(
+        useShallow(state => [state.establishment, state.getEstablishment])
+    )
+
+    const [cancelOrder, confirmOrder] = useStore(
+        useShallow(state => [state.cancelOrder, state.confirmOrder])
+    )
+
+    const cancelMutation = useMutation({
+        mutationKey : ["/user/order/cancel", orderCard.id],
+        mutationFn : () => cancelOrder(orderCard.id)
+    })
+
+    const confirmMutation = useMutation({
+        mutationKey : ["/user/order/confirm", orderCard.id],
+        mutationFn : () => confirmOrder(orderCard.id),
+    })
+
+    const getEstablishmentQuery = useQuery({
+        queryKey : ["establishment", orderCard.establishmentId],
+        queryFn : () => getEstablishment(orderCard.establishmentId)
+    })
+
+    const handleOnClick = (nextStatus) => {
+        if (nextStatus === 4) cancelMutation.mutate()
+        else confirmMutation.mutate()
+    }
 
     const {day, month} = parseDate(orderCard.date)
     const status = parseStatus(orderCard.status)
@@ -27,8 +56,16 @@ const OrderCard = ({orderCard}) => {
 
     return (
         <div className={style.wrapper}>
-            <EstablishmentCard fullWidth={true} card={orderCard.establishment}/>
+
+            {
+                getEstablishmentQuery.isSuccess ? <EstablishmentCard
+                    fullWidth={true} card={establishment}/> :
+                    getEstablishmentQuery.isLoading ?
+                        <div>Loading..</div> : null
+            }
+
             <div className={style.orderData}>
+
                 {
                     orderData.map((infoRow) => {
                         return <div className={style.infoRow}>
@@ -39,11 +76,20 @@ const OrderCard = ({orderCard}) => {
                         </div>
                     })
                 }
-                <Button
-                    text={"Отменить бронь"}
-                    bgColor={"#EEF5F9"}
-                    onClick={() => deleteOrder(orderCard.id)}
-                />
+
+                <section className={"w-full flex flex-row gap-[10px]"}>
+                    {
+                        orderCard.userActionList.map((action, key) => {
+                            return <Button
+                                key={key}
+                                text={action.actionName}
+                                bgColor={"#EEF5F9"}
+                                onClick={() => handleOnClick(action.nextStatus)}
+                            />
+                        })
+                    }
+                </section>
+
             </div>
         </div>
     )

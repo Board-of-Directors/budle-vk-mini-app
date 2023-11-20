@@ -6,7 +6,7 @@ export const establishmentListSlice = (set, get) => ({
     searchEstablishments: [],
 
     getAllEstablishments: async () => {
-        await api.get("/establishment/all")
+        await api.get("/user/establishments/all")
             .then((data) => set({establishments: data.data.result.establishments}))
             .catch((error) => console.log(error))
     },

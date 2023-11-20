@@ -14,8 +14,11 @@ import NotificationCard from "../../../entities/notification-card/NotificationCa
 import {MockNotification} from "../../../mock-data/MockNotification";
 import {useSSE} from "../../../api/sse";
 import NotificationPopup from "../../../features/notification-popup/NotificationPopup";
+import {useQuery} from "react-query";
 
-const EstablishmentListScreen = (props) => {
+const EstablishmentListScreen = () => {
+
+    const sse = useSSE()
 
     const [inputText, setText] = useState("")
     const [activeTag, setActive] = useState(filterTagsData[0])
@@ -23,9 +26,25 @@ const EstablishmentListScreen = (props) => {
     const [isFilterPopupVisible, setFilterPopupVisible] = useState(false)
     const [isNotificationPopupVisible, setNotificationPopupVisible] = useState(false)
 
+    const [notifications, addNewNotification] = useStore(
+        useShallow(state => [state.notificaitons, state.addNewNotification])
+    )
+
     useEffect(() => {
-        useSSE()
+
+        sse.addEventListener("message", (event) => {
+            console.log(event)
+            addNewNotification(event.data)
+        })
+
     }, [])
+
+
+    useEffect(() => {
+        if (notifications.length !== 0) {
+            setNotificationPopupVisible(true)
+        }
+    }, [notifications])
 
     return (
         <>

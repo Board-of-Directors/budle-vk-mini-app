@@ -13,7 +13,7 @@ export const SearchBarRow = ({isExpanded = false, onClick, ...props}) => {
                 isExpanded={isExpanded}
                 placeholder={"Поиск"}
                 onChange={props.onChange}
-                onClick={() => !isExpanded ? routeNavigator.push("/establishment-search") : {}}
+                onClick={() => !isExpanded && routeNavigator.push("/establishment-search")}
             />
             {
                 isExpanded ? null : <div className={style.iconRow}>

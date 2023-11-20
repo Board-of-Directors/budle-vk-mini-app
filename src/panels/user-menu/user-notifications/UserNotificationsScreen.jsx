@@ -5,18 +5,10 @@ import {MockNotification} from "../../../mock-data/MockNotification";
 import NotificationCard from "../../../entities/notification-card/NotificationCard";
 
 const UserNotificationsScreen = ({nav}) => {
-
-    const notifications = [MockNotification, MockNotification]
-
     return (
         <Panel nav={nav}>
             <div className={style.wrapper}>
                 <HeaderCloseRow header={"Мои уведомления"}/>
-                {
-                    notifications.map((notification) => {
-                        return <NotificationCard notification={notification} />
-                    })
-                }
             </div>
         </Panel>
     );

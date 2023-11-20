@@ -29,15 +29,24 @@ export const userBookingSlice = (set, get) => ({
             .catch((error) => console.log(error))
     },
 
-    deleteOrder: async (orderId) => {
-        await api.delete("/user/order", {
+    cancelOrder: async (orderId) => {
+        await api.put("/user/order/cancel",null, {
             params: {
-                userId: 0,
                 orderId: orderId
             }
         }).then((response) => console.log(response))
             .catch((error) => console.log(error))
         await get().getOrders(get().selectedStatusTag.id)
+    },
+
+    confirmOrder : async (orderId) => {
+        return api.put('/user/order/confirm', null, {
+            params : {
+                orderId : orderId
+            }
+        })
+            .then(console.log)
+            .catch(console.log)
     }
 
 })

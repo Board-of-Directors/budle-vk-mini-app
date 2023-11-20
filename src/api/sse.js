@@ -1,4 +1,3 @@
-import bridge from "@vkontakte/vk-bridge";
 
 export const useSSE = () => {
 
@@ -10,9 +9,11 @@ export const useSSE = () => {
             withCredentials: true
         })
 
-        sse.addEventListener("open", (e) => console.log("SSE_OPENED", e))
+        return sse
 
     }
+
+    return undefined
 
 }
 

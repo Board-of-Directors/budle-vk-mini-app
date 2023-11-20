@@ -13,6 +13,7 @@ import {useShallow} from "zustand/react/shallow";
 import {useEffect} from "react";
 import Button from "../../../shared/buttons/button/Button";
 import {filterTagsData} from "../../../entities/filter-tag-row/model/filterTagsData";
+import {useQuery} from "react-query";
 
 const EstablishmentCardScreen = (props) => {
 
@@ -27,46 +28,50 @@ const EstablishmentCardScreen = (props) => {
         useShallow((state) => [state.establishment, state.getEstablishment])
     )
 
-    useEffect(() => {
-        getEstablishmentInfo(establishmentId)
-    }, [])
+    const establishmentQuery = useQuery({
+        queryKey : ["establishment", establishmentId],
+        queryFn : () => getEstablishmentInfo(establishmentId)
+    })
 
-    return (
-        <Panel nav={props.nav}>
-            {
-                establishmentInfo === null ? null :
-                    <div>
-                        <EstablishmentPhotoCard
-                            image={establishmentInfo.image}
-                            name={establishmentInfo.name}
-                            category={"Рестораны"}
-                            kitchen={establishmentInfo.cuisineCountry}
-                        />
-                        <div className={style.wrapper}>
-                            <RatingRow rating={establishmentInfo.rating}/>
-                            <FilterTagRow
-                                tagList={filterTagsData}
-                                activeTag={mockActiveTag}
-                                setActive={() => {}}
+    if (establishmentQuery.isSuccess) {
+        return (
+            <Panel nav={props.nav}>
+                {
+                    establishmentInfo === null ? null :
+                        <div>
+                            <EstablishmentPhotoCard
+                                image={establishmentInfo.image}
+                                name={establishmentInfo.name}
+                                category={"Рестораны"}
+                                kitchen={establishmentInfo.cuisineCountry}
                             />
-                            <EstablishmentDescription description={establishmentInfo.description}/>
-                            <PhotoCardGrid photos={[]}/>
-                            <WorkingHoursRow workingHours={establishmentInfo.workingHours}/>
-                            <AddressRow
-                                subway={establishmentInfo.subway}
-                                address={establishmentInfo.address}
-                            />
-                            <Button
-                                text={"Забронировать место"}
-                                onClick={() => routeNavigator.push(
-                                    `/establishment-card/${establishmentId}/booking`
-                                )}
-                            />
+                            <div className={style.wrapper}>
+                                <RatingRow rating={establishmentInfo.rating}/>
+                                <FilterTagRow
+                                    tagList={filterTagsData}
+                                    activeTag={mockActiveTag}
+                                    setActive={() => {}}
+                                />
+                                <EstablishmentDescription description={establishmentInfo.description}/>
+                                <PhotoCardGrid photos={[]}/>
+                                <WorkingHoursRow workingHours={establishmentInfo.workingHours}/>
+                                <AddressRow
+                                    subway={establishmentInfo.subway}
+                                    address={establishmentInfo.address}
+                                />
+                                <Button
+                                    text={"Забронировать место"}
+                                    onClick={() => routeNavigator.push(
+                                        `/establishment-card/${establishmentId}/booking`
+                                    )}
+                                />
+                            </div>
                         </div>
-                    </div>
-            }
-        </Panel>
-    )
+                }
+            </Panel>
+        )
+    }
+
 }
 
 export default EstablishmentCardScreen
